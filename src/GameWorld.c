@@ -3,8 +3,7 @@
  * @author Prof. Dr. David Buzatto
  * @brief Main function and logic for the game. Base template for game
  * development in C using Raylib (https://www.raylib.com/).
- * 
- * @copyright Copyright (c) 2026
+ * * @copyright Copyright (c) 2026
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -278,16 +277,7 @@ void resolverColisaoBolinhaJogador (Bolinha *b, Jogador *j) {
             } else {
                 b->centro.y = j->ret.y + j->ret.height + b->raio;
             }
-
-            float impacto = (b->centro.x - centroJogadorX) / (j->ret.width / 2.0f);
-            if (impacto < -1.0f) impacto = -1.0f;
-            if (impacto >  1.0f) impacto =  1.0f;
-
-            float velocidade = sqrtf(b->vel.x * b->vel.x + b->vel.y * b->vel.y);
-            float angulo = impacto * (PI / 3.0f);
-
-            b->vel.x =  velocidade * sinf(angulo);
-            b->vel.y = -velocidade * cosf(angulo);
+            b->vel.y = -b->vel.y;
         }
     }
 }
